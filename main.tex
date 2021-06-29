@@ -1,12 +1,79 @@
 \documentclass{book}
 \usepackage{fullpage}
+\usepackage{amsmath}
 
 \begin{document}
 
+\tableofcontents
+
 \chapter{Simple Acoustics}
 
-\section{Deriving the Acoustic Wave Equation in Fluids}
+\section{Deriving the Linear Acoustic Wave Equation in Fluids}
 
-Hello there are lots of things I'd like to type in right here but I'm not sure how much I'll be able to fit on one line so I will just keep typing right now
+To derive the linear acoustic wave equation, we begin with three fundamental fluid equations. They are the equation of state (\ref{eq:The Equation of State}), the equation of continuity (\ref{eq:The Equation of Continuity}), and the linear Euler equation (\ref{eq:The Linear Euler Equation}):
+
+\begin{equation} \label{eq:The Equation of State}
+    p \approx B s
+\end{equation}
+
+\begin{equation} \label{eq:The Equation of Continuity}
+    \rho_0 \frac{\partial s}{\partial t} + \vec{\nabla} \cdot (\rho \vec{u}) = 0
+\end{equation}
+
+\begin{equation} \label{eq:The Linear Euler Equation}
+    \rho_0 \frac{\partial \vec{u}}{\partial t} = - \vec{\nabla} p
+\end{equation}
+
+where
+
+\begin{itemize}
+    \item $p$ = acoustic pressure
+    \item $B$ = adiabatic bulk modulus
+    \item $s$ = condensation
+    \item $u$ = particle velocity
+    \item $t$ = time
+\end{itemize}
+
+First, take the divergence of equation \ref{eq:The Linear Euler Equation}
+
+\begin{equation} \label{eq:Divergence of Linear Euler Equation}
+    \vec{\nabla} \cdot \left( \rho_0 \frac{\partial \vec{u}}{\partial t} \right) = -\vec{\nabla}^2 p
+\end{equation}
+
+Second, take the time derivative of equation \ref{eq:The Equation of Continuity}
+
+\begin{equation} \label{eq:Time Derivative of Continuity Equation}
+    \rho_0 \frac{\partial^2 s}{\partial t^2} + \vec{\nabla} \cdot \left(\rho_0 \frac{\partial \vec{u}}{\partial t}\right) = 0
+\end{equation}
+
+where in the second term, $\rho \rightarrow \rho_0$ comes as a result of assuming the condensation to be small.\footnote{See Kinsler and Frey section 5.3.} We now have identical terms within equations \ref{eq:Divergence of Linear Euler Equation} and \ref{eq:Time Derivative of Continuity Equation}, which results identical
+
+\begin{equation}
+    \rho_0 \frac{\partial^2 s}{\partial t^2} -\vec{\nabla}^2 p = 0
+\end{equation}
+
+\begin{equation}
+    \vec{\nabla}^2 p = \rho_0 \frac{\partial^2 s}{\partial t^2}
+\end{equation}
+
+Applying equation \ref{eq:The Equation of State} gives
+
+\begin{equation}
+    \vec{\nabla}^2 p = \rho_0 \frac{\partial^2 \left(\frac{p}{B}\right)}{\partial t^2}
+\end{equation}
+
+The adiabatic bulk modulus, $B$, is not a function of time and comes out, giving
+
+\begin{equation}
+    \vec{\nabla}^2 p = \frac{\rho_0}{B} \frac{\partial^2 p}{\partial t^2}
+\end{equation}
+
+Lastly, defining $c^2 = B/\rho_0$ gives the final result
+
+\begin{equation} \label{eq:Linear, Lossless Acoustic Wave Equation in Fluids}
+    \boxed{\vec{\nabla}^2 p = \frac{1}{c^2} \frac{\partial^2 p}{\partial t^2}}
+\end{equation}
+
+Note also that equation \ref{eq:Linear, Lossless Acoustic Wave Equation in Fluids} is the linear, \textit{lossless} acoustic wave equation in fluids.
 
 \end{document}
