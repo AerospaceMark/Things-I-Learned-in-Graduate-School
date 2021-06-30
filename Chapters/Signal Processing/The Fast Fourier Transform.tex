@@ -21,7 +21,7 @@ where
 \begin{figure}[H]
     \centering
     \includegraphics[width = 6 in]{Chapters/Signal Processing/Figures/Sample Waveform.png}
-    \caption{A sample waveform for use in the FFT review. I have placed tones at 9 and 33 Hz along with gaussian-distributed random noise. The sampling frequency is 100 Hz.}
+    \caption{A sample waveform for use in the FFT review. I have placed tones at 9 and 33 Hz with amplitudes of 3.0 and 5.0 respectively, along with gaussian-distributed random noise. The sampling frequency is 100 Hz.}
     \label{fig:FFT Sample Waveform}
 \end{figure}
 
@@ -32,7 +32,45 @@ The real part describes the amplitude of the frequencies, and the imaginary part
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 6 in]{Chapters/Signal Processing/Figures/Raw FFT Output.png
+    \includegraphics[width = 6 in]{Chapters/Signal Processing/Figures/Raw FFT Output.png}
     \caption{The raw output of the FFT function in MATLAB, showing both the real (left) and imaginary (right) parts of the output.}
     \label{fig:Raw FFT Output}
+\end{figure}
+
+Now we will turn our attention to only the real part.
+We can now normalize the amplitudes by dividing the FFT output by the length of the waveform and taking the absolute value, as shown in Figure \ref{fig:Normalized Double-sided Spectrum}.
+Notice that the amplitudes of the tones are incorrect.
+To correct for this, we will take the right-hand side (everything greater than fs/2) and adding it on top of everything on the left-hand side.
+More simply still, we can just get rid of the right-hand side and double the amplitudes of the left-hand side.
+This result is shown in Figure \ref{fig:Normalized Single-sided Spectrum}.
+Notice that we don't get the correct amplitudes. This can be fixed by using a higher sampling frequency, as shown in Figure \ref{fig:FFT Using a Higher Sampling Frequency}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 4 in]{Chapters/Signal Processing/Figures/Normalized Double-sided Spectrum.png}
+    \caption{The normalized double-sided spectrum.}
+    \label{fig:Normalized Double-sided Spectrum}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 4 in]{Chapters/Signal Processing/Figures/Normalized Single-sided Spectrum.png}
+    \caption{The normalized single-sided spectrum.}
+    \label{fig:Normalized Single-sided Spectrum}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 4 in]{Chapters/Signal Processing/Figures/Using a Higher Sampling Frequency.png}
+    \caption{The normalized single-sided spectrum obtained using a sampling frequency of 1000 Hz instead of 100 Hz.}
+    \label{fig:FFT Using a Higher Sampling Frequency}
+\end{figure}
+
+Lastly, the frequency resolution can be improved by increasing the length of the recording, as shown in Figure \ref{fig:Adjusting the Recording Length for FFT}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 6 in]{Chapters/Signal Processing/Figures/Adjusting the Recording Length.png}
+    \caption{The single-sided spectra calculated using a few different recording lengths. The frequency resolution increases with increased recording length.}
+    \label{fig:Adjusting the Recording Length for FFT}
 \end{figure}
