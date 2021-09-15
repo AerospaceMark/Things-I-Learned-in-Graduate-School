@@ -1,0 +1,3 @@
+[deps]
+StatsKit = "2cb19f9e-ec4d-5c53-8573-a4542a68d3f0"
+StatsPlots = "f3b207a7-027a-5e70-b257-86293d7955fd"
